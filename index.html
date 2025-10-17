@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Calling tailwind-->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Delicious Delights - Online Orders</title>
+</head>
+<body>
+    
+<div id="mainPage">
+    <!--Header Search and Cart Overview--> 
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <!--Subcontainer to control the elements of the header-->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!--This div will contain the 3 main elements of the header:
+            business name, menu search bar, and cart overview-->
+            <div class= "flex justify-between items-center h-20">
+                <!--Company Name Header-->
+                <header class="text-lg md:text-xl lg:text-2xl font-extrabold text-green-900"> 
+                    Delicious Delights </header>
+
+                <!--Search Bar-->
+                <div class="flex-1 max-w-lg mx-4 sm:mx-8 min-w-64">
+                    <div class="relative">
+                        <input
+                            type="text"
+                            id="searchBarInput"
+                            placeholder="Find your next favorite meal..."
+                            class="w-full pl-10 rounded-xl border-2 border-gray-300 shadow-inner placeholder-gray-400 text-gray-800"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute left-3 top-1/2 -translate-y-1/2 size-6 text-gray-500 stroke-current"
+                        >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                        >
+                        </svg>
+                    </div>
+
+                </div>
+
+                <!--Cart Icon and Counter-->
+                <div>
+                    <button class="flex items-center space-x-2 p-3 bg-indigo-500 text-white rounded-xl shadow-xl">
+                        
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </header>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
