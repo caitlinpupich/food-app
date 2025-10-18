@@ -10,7 +10,7 @@
 <body>
     
 <div id="mainPage">
-    <!--Header Search and Cart Overview--> 
+    <!--Header Search and Cart Overview - screen-wide contanier --> 
     <header class="bg-white shadow-lg sticky top-0 z-10">
         <!--Subcontainer to control the elements of the header-->
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,49 +70,13 @@
 
     <!--Entire Menu Section (grid container for menu cards)-->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 class="text-xl md:text-3xl lg:text-4xl font-bold font-sans text-center pb-4">The Monthly Mouthwatering Menu</h2>
+        <h2 class="text-xl md:text-3xl lg:text-4xl font-bold font-sans text-center pb-4">
+            The Monthly Mouthwatering Menu</h2>
         
         <!--Menu Card Grid Area (Data pulled from JSON file)-->
         <div id="menuContainer" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"    
         >
-            <!--Food card 1-->
-            <div id=cardOne class="grid grid-cols-1 bg-blue-50 shadow-lg border-2 border-indigo-200 rounded-lg">
-                <!--Item Title-->
-                <h3 class="font-bold font-sans text-sm md:text-lg tracking-wide text-center">
-                    Yummy Cookie 1
-                </h3>
-                <!--Item Description-->
-                <p class="font-sans text-xs md:text-sm tracking-wide text-center">
-                    Here is a description for a yummy cookie. It will be a bit longer than the title, 
-                    but not too long.
-                </p>
-            </div>
-
-            <!--Food card 2-->
-            <div id=cardOne class="grid grid-cols-1 bg-blue-50 shadow-lg border-2 border-indigo-200 rounded-lg">
-                <!--Item Title-->
-                <h3 class="font-bold font-sans text-sm md:text-lg tracking-wide text-center">
-                    Yummy Cookie 2
-                </h3>
-                <!--Item Description-->
-                <p class="font-sans text-xs md:text-sm tracking-wide text-center">
-                    Here is a description for a yummy cookie. It will be a bit longer than the title, 
-                    but not too long.
-                </p>
-            </div>
-
-            <!--Food card 3-->
-            <div id=cardOne class="grid grid-cols-1 bg-blue-50 shadow-lg border-2 border-indigo-200 rounded-lg">
-                <!--Item Title-->
-                <h3 class="font-bold font-sans text-sm md:text-lg tracking-wide text-center">
-                    Yummy Cookie 3
-                </h3>
-                <!--Item Description-->
-                <p class="font-sans text-xs md:text-sm tracking-wide text-center">
-                    Here is a description for a yummy cookie. It will be a bit longer than the title, 
-                    but not too long.
-                </p>
-            </div>
+  
 
         </div>
     </main>
@@ -122,22 +86,58 @@
 </body>
 
 <script>
-    // Task counter example from Alex to help with cart counter
-        //function updateCartCount() {
-            //const totalItems = document.querySelectorAll('.task-item').length;
-            //taskCount.textContent = totalTasks;
-       // }
+
+    //Trying again using the code Alex provided for this project as an example
+    document.addEventListener('DOMContentLoaded', () => 
+    {fetch('menu.json')
+        //Pull and convert the json data to an array of objects.    
+        .then(response => {
+            if (!response.ok){
+                throw new Error ('Network Response Failed!')
+            }
+            return response.json()
+        })
+        //Assign the array of objects from json to the variable menuItems and plug into display menu function
+        .then(menuItems => {
+            displayMenu(menuItems)
+        })
+
+        //If there is an error, display for the user.
+        .catch(error => {
+            document.getElementById('menuContainer').innerHTML = `
+            <p class = "text-red-500 text-center col-span-full">
+                Failed to Load Menu, please try again or call the business Number.
+            </p>`
+            console.error("Error in fetching menu:", error)
+        })
+    })
+
+    
+    function displayMenu(menuItems){
+        const menuContainer = document.getElementById('menuContainer')
+        menuContainer.innerHTML=''
+
+        menuItems.forEach(menuItem => { 
+            const menuItemCard = document.createElement('div')
+            menuItemCard.innerHTML= `
+            <div class="shadow-lg border-2 border-indigo-200 bg-gray-50 rounded-lg hover:scale-[1.02] p-4 ">
+                <h3 class="font-bold font-sans text-sm md:text-lg tracking-wide text-center p-2">
+                    ${menuItem.name}
+                </h3>
+                <p class="font-sans text-xs md:text-sm tracking-wide text-center text-gray-500 p-2">
+                    ${menuItem.description}
+                </p>
+                <p class="font-sans font-bold text-sm md:text-lg tracking-wide text-right p-2">
+                   $${menuItem.price}
+                </p>
+                <button class="border rounded-lg bg-blue-400 text-white font-bold 
+                hover:bg-blue-800 hover:cursor-pointer p-2">
+                    Add to Cart
+                </button>
+            </div>`
+
+            menuContainer.appendChild(menuItemCard)
+        })
+    }
+
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
