@@ -5,37 +5,43 @@
     "id": 1,
     "name": "Ye Old Chocolate Chip",
     "description": "A classic chocolate chip cookie. Rich but simple.",
-    "price": 6.00
+    "price": 6.00,
+    "image": "ChocolateChipCookieSimple.png"
   },
   {
     "id": 2,
     "name": "Cookies and Cream(ier)",
     "description": "Like double stuffed oreos...but quadruple stuffed",
-    "price": 7.00
+    "price": 7.00,
+    "image": "CreamCookie.png"
   },
   {
     "id": 3,
-    "name": "Snicker Doodle",
+    "name": "Snickerdoodle",
     "description": "Just the right amount of crunch, with a warm and soft inside.",
-    "price": 6.00
+    "price": 6.00,
+    "image": "CreamCookie.png"
   },
   {
     "id": 4,
     "name": "Halloweekend",
     "description": "A spookily sprinkled delight! Enjoy a soft pillow cookie with a semi-sweet rum glaze.",
-    "price": 9.00
+    "price": 9.00,
+    "image": "HalloweekendCookie.png"
   },
   {
     "id": 5,
     "name": "Chocolate Peanut Swirl",
     "description": "A delightful swirl of creamy, melted dark chocolate and rich peanut butter.",
-    "price": 7.00
+    "price": 7.00,
+    "image": "PeanutButterChocolateSwrilCookieSimple.png"
   },
   {
     "id": 6,
     "name": "Glass of Milk",
     "description": "You guessed it: a glass of milk. Organic milk from happy cows. Served in your very own classic-style glass milk bottle.",
-    "price": 6.00
+    "price": 6.00,
+    "image": "ChocolateChipCookieSimple.png"
   }
   
 ]
