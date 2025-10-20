@@ -20,7 +20,7 @@
     "name": "Snickerdoodle",
     "description": "Just the right amount of crunch, with a warm and soft inside.",
     "price": 6.00,
-    "image": "CreamCookie.png"
+    "image": "SnickerDoodle.png"
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "name": "Glass of Milk",
     "description": "You guessed it: a glass of milk. Organic milk from happy cows. Served in your very own classic-style glass milk bottle.",
     "price": 6.00,
-    "image": "ChocolateChipCookieSimple.png"
+    "image": "Milk.png"
   }
   
 ]
