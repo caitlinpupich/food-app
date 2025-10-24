@@ -42,7 +42,8 @@
             <!--Cart and Counter-->
             <div>
                 <button class="flex items-center space-x-2 p-3 bg-blue-400 text-white rounded-xl shadow-xl cursor-pointer
-                hover:bg-blue-800" onclick="alert('Cart Coming Soon!')"
+                hover:bg-blue-800" 
+                id="cartCountButton"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /
@@ -79,6 +80,21 @@
 
 
 <script>
+    //Assign necessary variables and DOM elements for cart updates
+    let cartCountNum = 0
+    let totalPrice = 0
+    const cartCountNumber = document.getElementById('cartCount')
+    const cartCountButton = document.getElementById('cartCountButton') 
+    const cartContents = []
+
+    cartCountButton.addEventListener('click', function(e){
+        alert(`
+                Cart Summary:
+                Total Items: ${cartCountNum}
+                Total Price: $${totalPrice}
+                `)
+    })
+
     //Use DOM Elements to pull JSON data and make menu cards
     document.addEventListener('DOMContentLoaded', () => 
     {fetch('menu.json')
@@ -97,7 +113,7 @@
         //If there is an error, display for the user.
         .catch(error => {
             document.getElementById('menuContainer').innerHTML =`
-                <div class="bg-black border-2 rounded-lg border-red-800 shadow-lg py-4 px-6 mx-auto">
+                <div bg-black border-2 rounded-lg border-red-800 shadow-lg py-4 px-6 mx-auto">
                     <p class = "text-base md:text-xl font-semibold text-red-500 text-center">
                     Failed to Load Menu, please try again or call the business number.
                     </p>
@@ -105,8 +121,7 @@
             console.error("Error in fetching menu:", error)
         })
     })
-
-    
+  
     function displayMenu(menuItems){
         const menuContainer = document.getElementById('menuContainer')
         menuContainer.innerHTML=''
@@ -132,13 +147,27 @@
                 <p class="font-sans font-bold text-sm md:text-lg tracking-wide text-right p-2">
                    $${menuItem.price}
                 </p>
-                <button class="border rounded-lg bg-blue-400 text-white font-bold 
-                hover:bg-blue-800 hover:cursor-pointer p-2">
+                <button class="addToCartBtn border rounded-lg bg-blue-400 text-white font-bold 
+                hover:bg-blue-800 hover:cursor-pointer p-2" >
                     Add to Cart
                 </button>
             </div>`
 
             menuContainer.appendChild(menuItemCard)
+            
+            //Code to update the cart when "Add to Cart" is clicked
+            const addButton = menuItemCard.querySelector('.addToCartBtn')
+
+            addButton.addEventListener('click',function(e) {
+                cartCountNum++
+                totalPrice = totalPrice + menuItem.price
+                cartCountNumber.textContent = cartCountNum
+                cartContents.push(menuItem.name)
+
+                console.log("Item added to cart:", menuItem.name, menuItem.price)
+                console.log("Total items:", cartCountNum, "Total Price: $", totalPrice)
+                console.log(cartContents)
+            })
         })
     }
 
